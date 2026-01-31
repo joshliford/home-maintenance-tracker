@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+
+
 @Entity
 @Table(name = "maintenance_items")
 public class MaintenanceItem {
@@ -14,11 +16,11 @@ public class MaintenanceItem {
 
     @ManyToOne // foreign key to id in homes table
     @JoinColumn(name = "home_id", nullable = false)
-    private Home home; // mapped to Home object
+    private Home home; // mapped to Home object (many items can belong to one home)
 
     @ManyToOne // foreign key to id in maintenance_categories table
     @JoinColumn(name = "category_id", nullable = false)
-    private MaintenanceCategory category; // mapped to MaintenanceCategory objects
+    private MaintenanceCategory category; // mapped to MaintenanceCategory object (many items can share one category)
 
     private String description;
 
