@@ -7,6 +7,17 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/*
+7 operations:
+getAllItems()
+getItemById(int id)
+createItem(MaintenanceItem item)
+updateItem(int id, MaintenanceItem item)
+deleteItem(int id)
+getItemsByHomeId(int homeId)
+getItemsByCategoryId(int categoryId)
+*/
+
 @Service
 public class MaintenanceItemService {
 

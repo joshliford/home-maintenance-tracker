@@ -6,6 +6,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
+4 operations:
+getAllCategories()
+getCategoryById(int id)
+createCategory(MaintenanceCategory category)
+deleteCategory(int id)
+*/
+
 @Service
 public class MaintenanceCategoryService {
 

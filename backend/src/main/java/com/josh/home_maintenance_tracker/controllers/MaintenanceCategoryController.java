@@ -6,6 +6,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/*
+4 endpoints:
+GET api/categories (get all categories)
+GET api/categories/{categoryId} (get category by ID)
+POST api/categories (create new category)
+DELETE api/categories/{categoryId} (delete category by ID)
+*/
+
 @RestController
 @RequestMapping("/api/categories") // base URL path
 public class MaintenanceCategoryController {

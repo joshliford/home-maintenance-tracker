@@ -6,6 +6,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/*
+5 endpoints + 2 custom endpoints:
+GET /api/maintenance-items (get all maintenance items)
+GET /api/maintenance-items/{maintenanceItemId} (get maintenance item by ID)
+POST /api/maintenance-items (create new maintenance item)
+PUT /api/maintenance-items/{maintenanceItemId} (update existing maintenance item)
+DELETE /api/maintenance-items/{maintenanceItemId} (delete maintenance item by ID)
+GET /api/maintenance-items/home/{homeId} (get maintenance items by home ID)
+GET /api/maintenance-items/category/{categoryId} (get maintenance items by category ID)
+*/
+
 @RestController
 @RequestMapping("/api/maintenance-items")
 public class MaintenanceItemController {
@@ -41,7 +52,7 @@ public class MaintenanceItemController {
         maintenanceItemService.deleteItemById(maintenanceItemId);
     }
 
-    // custom requests
+    // custom endpoints
 
     @GetMapping("/home/{homeId}")
     public List<MaintenanceItem> getItemsByHomeId(@PathVariable int homeId) {
