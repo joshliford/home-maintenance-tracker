@@ -33,7 +33,7 @@ public class MaintenanceCategoryService {
     }
 
     // return a category by id
-    public MaintenanceCategory getCategoryById(int id) {
+    public MaintenanceCategory getCategoryById(Integer id) {
         return maintenanceCategoryRepository.findById(id).orElse(null);
     }
 
@@ -42,7 +42,7 @@ public class MaintenanceCategoryService {
         return maintenanceCategoryRepository.save(category);
     }
 
-    public void deleteCategory(int id) {
+    public void deleteCategory(Integer id) {
         maintenanceCategoryRepository.deleteById(id);
     }
 

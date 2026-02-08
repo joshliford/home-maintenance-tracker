@@ -12,7 +12,7 @@ public class MaintenanceItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @ManyToOne // foreign key to id in homes table
     @JoinColumn(name = "home_id", nullable = false)
@@ -42,7 +42,7 @@ public class MaintenanceItem {
 
     }
 
-    public MaintenanceItem(MaintenanceCategory category, String description, Home home, int maintenanceFrequencyDays, String model, String notes, String serialNumber, int yearInstalled) {
+    public MaintenanceItem(MaintenanceCategory category, String description, Home home, Integer maintenanceFrequencyDays, String model, String notes, String serialNumber, Integer yearInstalled) {
         this.category = category;
         this.description = description;
         this.home = home;
@@ -85,11 +85,11 @@ public class MaintenanceItem {
         this.home = home;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public int getMaintenanceFrequencyDays() {
+    public Integer getMaintenanceFrequencyDays() {
         return maintenanceFrequencyDays;
     }
 
@@ -129,11 +129,11 @@ public class MaintenanceItem {
         this.updatedAt = updatedAt;
     }
 
-    public int getYearInstalled() {
+    public Integer getYearInstalled() {
         return yearInstalled;
     }
 
-    public void setYearInstalled(int yearInstalled) {
+    public void setYearInstalled(Integer yearInstalled) {
         this.yearInstalled = yearInstalled;
     }
 }

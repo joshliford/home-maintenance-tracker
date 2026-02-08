@@ -31,7 +31,7 @@ public class MaintenanceCategoryController {
 
     // @PathVariable = extract ID from URL path variable
     @GetMapping("/{categoryId}")
-    public MaintenanceCategory getCategoryById(@PathVariable int categoryId) {
+    public MaintenanceCategory getCategoryById(@PathVariable Integer categoryId) {
         return maintenanceCategoryService.getCategoryById(categoryId);
     }
 
@@ -42,7 +42,7 @@ public class MaintenanceCategoryController {
     }
 
     @DeleteMapping("/{categoryId}")
-    public void deleteCategoryById(@PathVariable int categoryId) {
+    public void deleteCategoryById(@PathVariable Integer categoryId) {
         maintenanceCategoryService.deleteCategory(categoryId);
     }
 

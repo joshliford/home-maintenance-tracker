@@ -31,7 +31,7 @@ public class MaintenanceItemService {
         return maintenanceItemRepository.findAll();
     }
 
-    public MaintenanceItem getItemById(int id) {
+    public MaintenanceItem getItemById(Integer id) {
         return maintenanceItemRepository.findById(id).orElse(null);
     }
 
@@ -39,7 +39,7 @@ public class MaintenanceItemService {
         return maintenanceItemRepository.save(maintenanceItem);
     }
 
-    public MaintenanceItem updateItem(int id, MaintenanceItem updatedItem) {
+    public MaintenanceItem updateItem(Integer id, MaintenanceItem updatedItem) {
         // find the existingItem by ID
         MaintenanceItem existingItem = maintenanceItemRepository.findById(id).orElse(null);
         if (existingItem == null) {
@@ -59,17 +59,17 @@ public class MaintenanceItemService {
         return maintenanceItemRepository.save(existingItem);
     }
 
-    public void deleteItemById(int id) {
+    public void deleteItemById(Integer id) {
         maintenanceItemRepository.deleteById(id);
     }
 
     // custom filter methods (findByHomeId and findByCategoryId)
 
-    public List<MaintenanceItem> getItemsByHomeId(int homeId) {
+    public List<MaintenanceItem> getItemsByHomeId(Integer homeId) {
         return maintenanceItemRepository.findByHomeId(homeId);
     }
 
-    public List<MaintenanceItem> getItemsByCategoryId(int categoryId) {
+    public List<MaintenanceItem> getItemsByCategoryId(Integer categoryId) {
         return maintenanceItemRepository.findByCategoryId(categoryId);
     }
 }

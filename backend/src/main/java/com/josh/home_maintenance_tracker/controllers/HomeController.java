@@ -31,7 +31,7 @@ public class HomeController {
     }
 
     @GetMapping("/{homeId}")
-    public Home getHomeById(@PathVariable int homeId) {
+    public Home getHomeById(@PathVariable Integer homeId) {
         return homeService.getHomeById(homeId);
     }
 
@@ -41,12 +41,12 @@ public class HomeController {
     }
 
     @PutMapping("/{homeId}")
-    public Home updateHome(@PathVariable int homeId, @RequestBody Home home) {
+    public Home updateHome(@PathVariable Integer homeId, @RequestBody Home home) {
         return homeService.updateHome(homeId, home);
     }
 
     @DeleteMapping("/{homeId}")
-    public void deleteHome(@PathVariable int homeId) {
+    public void deleteHome(@PathVariable Integer homeId) {
         homeService.deleteHome(homeId);
     }
 

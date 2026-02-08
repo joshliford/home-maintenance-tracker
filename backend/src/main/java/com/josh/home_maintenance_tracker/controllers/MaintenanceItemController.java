@@ -33,7 +33,7 @@ public class MaintenanceItemController {
     }
 
     @GetMapping("/{maintenanceItemId}")
-    public MaintenanceItem getItemById(@PathVariable int maintenanceItemId) {
+    public MaintenanceItem getItemById(@PathVariable Integer maintenanceItemId) {
         return maintenanceItemService.getItemById(maintenanceItemId);
     }
 
@@ -43,19 +43,19 @@ public class MaintenanceItemController {
     }
 
     @PutMapping("/{maintenanceItemId}")
-    public MaintenanceItem updateMaintenanceItem(@PathVariable int maintenanceItemId, @RequestBody MaintenanceItem maintenanceItem) {
+    public MaintenanceItem updateMaintenanceItem(@PathVariable Integer maintenanceItemId, @RequestBody MaintenanceItem maintenanceItem) {
         return maintenanceItemService.updateItem(maintenanceItemId, maintenanceItem);
     }
 
     @DeleteMapping("/{maintenanceItemId}")
-    public void deleteItemById(@PathVariable int maintenanceItemId) {
+    public void deleteItemById(@PathVariable Integer maintenanceItemId) {
         maintenanceItemService.deleteItemById(maintenanceItemId);
     }
 
     // custom endpoints
 
     @GetMapping("/home/{homeId}")
-    public List<MaintenanceItem> getItemsByHomeId(@PathVariable int homeId) {
+    public List<MaintenanceItem> getItemsByHomeId(@PathVariable Integer homeId) {
         return maintenanceItemService.getItemsByHomeId(homeId);
     }
 

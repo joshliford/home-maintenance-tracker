@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(unique = true)
     @NotNull
@@ -77,7 +77,7 @@ public class User {
         this.firstName = firstName;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

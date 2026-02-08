@@ -29,7 +29,7 @@ public class HomeService {
         return homeRepository.findAll();
     }
 
-    public Home getHomeById(int id) {
+    public Home getHomeById(Integer id) {
         return homeRepository.findById(id).orElse(null);
     }
 
@@ -38,7 +38,7 @@ public class HomeService {
         return homeRepository.save(home);
     }
 
-    public Home updateHome(int id, Home updatedHome) {
+    public Home updateHome(Integer id, Home updatedHome) {
         Home existingHome = homeRepository.findById(id).orElse(null);
         if (existingHome == null) {
             return null; // TODO: throw exception
@@ -50,7 +50,7 @@ public class HomeService {
         return homeRepository.save(existingHome);
     }
 
-    public void deleteHome(int id) {
+    public void deleteHome(Integer id) {
         homeRepository.deleteById(id);
     }
 

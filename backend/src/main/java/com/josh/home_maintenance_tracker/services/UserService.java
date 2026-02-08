@@ -29,7 +29,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(int id) {
+    public User getUserById(Integer id) {
         return userRepository.findById(id).orElse(null);
     }
 
@@ -38,7 +38,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User updateUser(int id, User updatedUser) {
+    public User updateUser(Integer id, User updatedUser) {
         User existingUser = userRepository.findById(id).orElse(null);
         if (existingUser == null) { // TODO: throw exception
             return null;

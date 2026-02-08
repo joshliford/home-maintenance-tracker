@@ -9,7 +9,7 @@ public class MaintenanceCategory {
 
     @Id // indicates primary key of table
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment id
-    private int id;
+    private Integer id;
 
     @Column(unique = true) // unique constraint
     @NotNull // cannot be null
@@ -32,7 +32,7 @@ public class MaintenanceCategory {
         this.category = category;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 }

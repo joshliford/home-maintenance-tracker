@@ -11,7 +11,7 @@ public class MaintenanceRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @ManyToOne // foreign key to id in maintenance_items table
     @JoinColumn(name = "maintenance_item_id", nullable = false)
@@ -75,7 +75,7 @@ public class MaintenanceRecord {
         this.createdAt = createdAt;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

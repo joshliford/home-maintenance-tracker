@@ -9,7 +9,7 @@ public class Home {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @OneToOne // foreign key to id in users table
     @JoinColumn(name = "user_id", nullable = false) // actual column name
@@ -19,9 +19,11 @@ public class Home {
 
     private String propertyType;
 
-    private int yearBuilt;
+    // use the Integer wrapper class for columns that can contain null values
+    // primitive int cannot contain null values so need to use Integer
+    private Integer yearBuilt;
 
-    private int squareFootage;
+    private Integer squareFootage;
 
     private LocalDateTime updatedAt;
 
@@ -31,7 +33,7 @@ public class Home {
 
     }
 
-    public Home(String propertyType, int squareFootage, String state, User user, int yearBuilt) {
+    public Home(String propertyType, Integer squareFootage, String state, User user, Integer yearBuilt) {
         this.propertyType = propertyType;
         this.squareFootage = squareFootage;
         this.state = state;
@@ -47,7 +49,7 @@ public class Home {
         this.createdAt = createdAt;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -59,11 +61,11 @@ public class Home {
         this.propertyType = propertyType;
     }
 
-    public int getSquareFootage() {
+    public Integer getSquareFootage() {
         return squareFootage;
     }
 
-    public void setSquareFootage(int squareFootage) {
+    public void setSquareFootage(Integer squareFootage) {
         this.squareFootage = squareFootage;
     }
 
@@ -91,11 +93,11 @@ public class Home {
         this.user = user;
     }
 
-    public int getYearBuilt() {
+    public Integer getYearBuilt() {
         return yearBuilt;
     }
 
-    public void setYearBuilt(int yearBuilt) {
+    public void setYearBuilt(Integer yearBuilt) {
         this.yearBuilt = yearBuilt;
     }
 }
