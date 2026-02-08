@@ -28,9 +28,9 @@ public class MaintenanceItem {
 
     private String serialNumber;
 
-    private int yearInstalled;
+    private Integer yearInstalled;
 
-    private int maintenanceFrequencyDays;
+    private Integer maintenanceFrequencyDays;
 
     private String notes;
 
@@ -93,7 +93,7 @@ public class MaintenanceItem {
         return maintenanceFrequencyDays;
     }
 
-    public void setMaintenanceFrequencyDays(int maintenanceFrequencyDays) {
+    public void setMaintenanceFrequencyDays(Integer maintenanceFrequencyDays) {
         this.maintenanceFrequencyDays = maintenanceFrequencyDays;
     }
 
