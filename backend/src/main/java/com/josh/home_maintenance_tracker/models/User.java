@@ -1,7 +1,8 @@
 package com.josh.home_maintenance_tracker.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,25 +14,29 @@ public class User {
     private Integer id;
 
     @Column(unique = true)
-    @NotNull
+    @NotBlank(message = "Username is required")
+    @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
     private String username;
 
-    @NotNull
+    @NotBlank(message = "Password is required")
+    @Size(min = 8, message = "Password must be at least 8 characters")
     private String passwordHash;
 
     @Column(unique = true)
-    @NotNull
-    // used to log in so needs to be unique
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email should be valid")
     private String email;
 
     private String phone;
 
     private String notificationPreference;
 
-    @NotNull
+    @NotBlank(message = "First name is required")
+    @Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
     private String firstName;
 
-    @NotNull
+    @NotBlank(message = "Last name is required")
+    @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters")
     private String lastName;
 
     private LocalDateTime updatedAt;
