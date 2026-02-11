@@ -60,6 +60,55 @@ The application uses a relational MySQL database with the following tables:
 ## Entity Relationship Diagram
 ![Database ERD](docs/erd-diagram.png)
 
+## API Endpoints (34 endpoints)
+
+### Users (5 endpoints)
+- GET `/api/users` | Get all users
+- GET `/api/users/{userId}` | Get user by ID
+- POST `/api/users` | Create new user
+- PUT `/api/users/{userId}` | Update existing user
+- DELETE `api/users/{userId}` | Delete user
+
+### Homes (5 endpoints)
+- GET `/api/homes` | Get all homes
+- GET `/api/homes/{homeId}` | Get home by ID
+- POST `/api/homes` | Create new home
+- PUT `/api/homes/{homeId}` | Update existing home
+- DELETE `/api/homes/{homeId}` | Delete home
+
+### Maintenance Categories (4 endpoints)
+- GET `api/categories` | Get all categories
+- GET `api/categories/{categoryId}` | Get category by ID
+- POST `api/categories` | Create new category
+- DELETE `api/categories/{categoryId}` | Delete category
+
+### Maintenance Items (7 endpoints)
+- GET `/api/maintenance-items` | Get all maintenance items
+- GET `/api/maintenance-items/{maintenanceItemId}` | Get maintenance item by ID
+- POST `/api/maintenance-items` | Create new maintenance item
+- PUT `/api/maintenance-items/{maintenanceItemId}` | Update existing maintenance item
+- DELETE `/api/maintenance-items/{maintenanceItemId}` | Delete maintenance item
+- GET `/api/maintenance-items/home/{homeId}` | Get maintenance items by home ID
+- GET `/api/maintenance-items/category/{categoryId}` | Get maintenance items by category ID
+
+### Maintenance Records (6 endpoints)
+- GET `/api/maintenance-records` | Get all records
+- GET `/api/maintenance-records/{maintenanceRecordId}` | Get record by ID
+- POST `/api/maintenance-records` | Create new record
+- PUT `/api/maintenance-records/{maintenanceRecordId}` | Update existing record
+- DELETE `/api/maintenace-records/{maintenanceRecordId}` | Delete record
+- GET `/api/maintenance-item/{maintenanceItemId}` | Get record by maintenance item ID
+
+### Reminders (7 endpoints)
+- GET `/api/reminders` | Get all reminders
+- GET `/api/reminders/{reminderId}` | Get reminder by ID
+- POST `/api/reminders` | Create new reminder
+- PUT `/api/reminders/{reminderId}` | Update existing reminder
+- DELETE `/api/reminders/{reminderId}` | Delete reminder
+- GET `/api/reminders/maintenence-items/{maintenanceItemId}` | Get reminders by maintenanceItemId
+- GET `/api/reminders/status/{status}` | Get reminders by status
+
+
 ## Getting Started
 
 See individual README files in each directory for setup instructions.

@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /*
-5 endpoints:
+5 endpoints + 1 custom endpoint:
 GET /api/maintenance-records (get all records)
 GET /api/maintenance-records/{maintenanceRecordId} (get record by ID)
 POST /api/maintenance-records (create new record)
 PUT /api/maintenance-records/{maintenanceRecordId} (update existing record)
-DELETE /api/maintenace-records/{maintenanceRecordId} (delete record by)
+DELETE /api/maintenace-records/{maintenanceRecordId} (delete record)
+GET /api/maintenance-item/{maintenanceItemId} (get record by maintenance item ID)
 */
 
 @RestController
