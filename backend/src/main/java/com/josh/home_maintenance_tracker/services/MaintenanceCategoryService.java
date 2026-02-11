@@ -1,5 +1,6 @@
 package com.josh.home_maintenance_tracker.services;
 
+import com.josh.home_maintenance_tracker.exceptions.ResourceNotFoundException;
 import com.josh.home_maintenance_tracker.models.MaintenanceCategory;
 import com.josh.home_maintenance_tracker.repositories.MaintenanceCategoryRepository;
 import org.springframework.stereotype.Service;
@@ -9,9 +10,9 @@ import java.util.List;
 /*
 4 operations:
 getAllCategories()
-getCategoryById(int id)
+getCategoryById(Integer id)
 createCategory(MaintenanceCategory category)
-deleteCategory(int id)
+deleteCategory(Integer id)
 */
 
 @Service
@@ -34,7 +35,8 @@ public class MaintenanceCategoryService {
 
     // return a category by id
     public MaintenanceCategory getCategoryById(Integer id) {
-        return maintenanceCategoryRepository.findById(id).orElse(null);
+        return maintenanceCategoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Maintenance category not found with id: " + id));
     }
 
     // creates a new category
@@ -43,7 +45,9 @@ public class MaintenanceCategoryService {
     }
 
     public void deleteCategory(Integer id) {
-        maintenanceCategoryRepository.deleteById(id);
+        MaintenanceCategory existingMaintenanceCategory = maintenanceCategoryRepository.findById(id)
+                        .orElseThrow(() -> new ResourceNotFoundException("Maintenance category not found with id: " + id));
+        maintenanceCategoryRepository.delete(existingMaintenanceCategory);
     }
 
 }

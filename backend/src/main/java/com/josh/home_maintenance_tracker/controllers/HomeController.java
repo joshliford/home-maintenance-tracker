@@ -11,8 +11,8 @@ import java.util.List;
 GET /api/homes (get all homes)
 GET /api/homes/{homeId} (get home by ID)
 POST /api/homes (create new home)
-PUT /api/homes/{homeId} (update existing home by ID)
-DELETE /api/homes/{homeId} (delete home by ID)
+PUT /api/homes/{homeId} (update existing home)
+DELETE /api/homes/{homeId} (delete home)
 */
 
 @RestController

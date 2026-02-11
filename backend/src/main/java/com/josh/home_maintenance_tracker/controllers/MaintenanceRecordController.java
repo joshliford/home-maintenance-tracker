@@ -11,8 +11,8 @@ import java.util.List;
 GET /api/maintenance-records (get all records)
 GET /api/maintenance-records/{maintenanceRecordId} (get record by ID)
 POST /api/maintenance-records (create new record)
-PUT /api/maintenance-records/{maintenanceRecordId} (update existing record by ID)
-DELETE /api/maintenace-records/{maintenanceRecordId} (delete record by ID
+PUT /api/maintenance-records/{maintenanceRecordId} (update existing record)
+DELETE /api/maintenace-records/{maintenanceRecordId} (delete record by)
 */
 
 @RestController

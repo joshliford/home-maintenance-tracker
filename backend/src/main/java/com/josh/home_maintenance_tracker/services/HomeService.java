@@ -1,5 +1,6 @@
 package com.josh.home_maintenance_tracker.services;
 
+import com.josh.home_maintenance_tracker.exceptions.ResourceNotFoundException;
 import com.josh.home_maintenance_tracker.models.Home;
 import com.josh.home_maintenance_tracker.repositories.HomeRepository;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,10 @@ import java.util.List;
 /*
 5 operations:
 getAllHomes()
-getHomeById(int id)
+getHomeById(Integer id)
 createHome(Home home)
-updateHome(int id, Home home)
-deleteHome(int id)
+updateHome(Integer id, Home home)
+deleteHome(Integer id)
 */
 
 @Service
@@ -30,7 +31,8 @@ public class HomeService {
     }
 
     public Home getHomeById(Integer id) {
-        return homeRepository.findById(id).orElse(null);
+        return homeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Home not found with id: " + id));
     }
 
     public Home createHome(Home home) {
@@ -39,10 +41,8 @@ public class HomeService {
     }
 
     public Home updateHome(Integer id, Home updatedHome) {
-        Home existingHome = homeRepository.findById(id).orElse(null);
-        if (existingHome == null) {
-            return null; // TODO: throw exception
-        }
+        Home existingHome = homeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Home not found with id: " + id));
         existingHome.setState(updatedHome.getState());
         existingHome.setPropertyType(updatedHome.getPropertyType());
         existingHome.setSquareFootage(updatedHome.getSquareFootage());
@@ -51,7 +51,9 @@ public class HomeService {
     }
 
     public void deleteHome(Integer id) {
-        homeRepository.deleteById(id);
+        Home existingHome = homeRepository.findById(id)
+                        .orElseThrow(() -> new ResourceNotFoundException("Home not found with id: " + id));
+        homeRepository.delete(existingHome);
     }
 
 }

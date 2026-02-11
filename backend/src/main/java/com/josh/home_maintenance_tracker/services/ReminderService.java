@@ -1,5 +1,6 @@
 package com.josh.home_maintenance_tracker.services;
 
+import com.josh.home_maintenance_tracker.exceptions.ResourceNotFoundException;
 import com.josh.home_maintenance_tracker.models.Reminder;
 import com.josh.home_maintenance_tracker.repositories.ReminderRepository;
 import org.springframework.stereotype.Service;
@@ -9,13 +10,13 @@ import java.util.List;
 
 /*
 5 operations + 2 custom filter methods:
-getAllReminders
-getReminderById
-createReminder
-updateReminderById
-deleteReminderById
-getRemindersByMaintenanceItemId
-getRemindersByStatus
+getAllReminders()
+getReminderById(Integer reminderId)
+createReminder(Reminder reminder)
+updateReminder(Integer reminderId, Reminder updatedReminder)
+deleteReminder(Integer reminderId)
+getRemindersByMaintenanceItemId(Integer maintenanceItemId)
+getRemindersByStatus(String status)
 */
 
 @Service
@@ -32,7 +33,8 @@ public class ReminderService {
     }
 
     public Reminder getReminderById(Integer reminderId) {
-        return reminderRepository.findById(reminderId).orElse(null);
+        return reminderRepository.findById(reminderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Reminder not found with id: " + reminderId));
     }
 
     public Reminder createReminder(Reminder reminder) {
@@ -41,18 +43,18 @@ public class ReminderService {
     }
 
     public Reminder updateReminder(Integer reminderId, Reminder updatedReminder) {
-        Reminder existingReminder = reminderRepository.findById(reminderId).orElse(null);
-        if (existingReminder == null) {
-            return null; // TODO: throw exception
-        }
+        Reminder existingReminder = reminderRepository.findById(reminderId)
+                        .orElseThrow(() -> new ResourceNotFoundException("Reminder not found with id: " + reminderId));
         existingReminder.setDueDate(updatedReminder.getDueDate());
         existingReminder.setStatus(updatedReminder.getStatus());
         existingReminder.setSentAt(updatedReminder.getSentAt());
         return reminderRepository.save(existingReminder);
     }
 
-    public void deleteReminderById(Integer reminderId) {
-        reminderRepository.deleteById(reminderId);
+    public void deleteReminder(Integer reminderId) {
+        Reminder existingReminder = reminderRepository.findById(reminderId)
+                        .orElseThrow(() -> new ResourceNotFoundException("Reminder not found with id: " + reminderId));
+        reminderRepository.delete(existingReminder);
     }
 
     // custom filter methods

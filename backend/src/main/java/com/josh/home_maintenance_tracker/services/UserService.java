@@ -1,5 +1,6 @@
 package com.josh.home_maintenance_tracker.services;
 
+import com.josh.home_maintenance_tracker.exceptions.ResourceNotFoundException;
 import com.josh.home_maintenance_tracker.models.User;
 import com.josh.home_maintenance_tracker.repositories.UserRepository;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,10 @@ import java.util.List;
 /*
 5 operations:
 getAllUsers()
-getUserById(int id)
+getUserById(Integer id)
 createUser(User user)
-updateUser(int id, User user)
-deleteUser(int id)
+updateUser(Integer id, User updatedUser)
+deleteUser(Integer id)
 */
 
 @Service
@@ -30,7 +31,8 @@ public class UserService {
     }
 
     public User getUserById(Integer id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
     }
 
     public User createUser(User user) {
@@ -39,10 +41,8 @@ public class UserService {
     }
 
     public User updateUser(Integer id, User updatedUser) {
-        User existingUser = userRepository.findById(id).orElse(null);
-        if (existingUser == null) { // TODO: throw exception
-            return null;
-        }
+        User existingUser = userRepository.findById(id)
+                        .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " +id));
         existingUser.setUsername(updatedUser.getUsername());
         existingUser.setFirstName(updatedUser.getFirstName());
         existingUser.setLastName(updatedUser.getLastName());
@@ -53,8 +53,10 @@ public class UserService {
         return userRepository.save(existingUser);
     }
 
-    public void deleteUser(int id) {
-        userRepository.deleteById(id);
+    public void deleteUser(Integer id) {
+        User existingUser = userRepository.findById(id)
+                        .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+        userRepository.delete(existingUser); // use .delete() rather than .deleteById() since we're using a User object for the exception check
     }
 
 }

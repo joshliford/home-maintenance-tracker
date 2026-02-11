@@ -11,8 +11,8 @@ import java.util.List;
 GET /api/users (get all users)
 GET /api/users/{userId} (get user by ID)
 POST /api/users (create new user)
-PUT /api/users/{userId} (update existing user by ID)
-DELETE /api/users/{userId} (delete user by ID)
+PUT /api/users/{userId} (update existing user)
+DELETE /api/users/{userId} (delete user)
 */
 
 @RestController

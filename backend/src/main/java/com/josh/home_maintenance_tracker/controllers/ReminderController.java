@@ -11,8 +11,8 @@ import java.util.List;
 GET /api/reminders (get all reminders)
 GET /api/reminders/{reminderId} (get reminder by ID)
 POST /api/reminders (create reminder)
-PUT /api/reminders/{reminderId} (update reminder by ID)
-DELETE /api/reminders/{reminderId} (delete reminder by ID)
+PUT /api/reminders/{reminderId} (update reminder)
+DELETE /api/reminders/{reminderId} (delete reminder)
 GET /api/reminders/maintenence-items/{maintenanceItemId} (get reminders by maintenanceItemId)
 GET /api/reminders/status/{status} (get reminders by status)
 */
@@ -49,7 +49,7 @@ public class ReminderController {
 
     @DeleteMapping("/{reminderId}")
     public void deleteReminder(@PathVariable Integer reminderId) {
-        reminderService.deleteReminderById(reminderId);
+        reminderService.deleteReminder(reminderId);
     }
 
     // custom endpoints

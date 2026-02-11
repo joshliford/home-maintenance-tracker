@@ -12,7 +12,7 @@ GET /api/maintenance-items (get all maintenance items)
 GET /api/maintenance-items/{maintenanceItemId} (get maintenance item by ID)
 POST /api/maintenance-items (create new maintenance item)
 PUT /api/maintenance-items/{maintenanceItemId} (update existing maintenance item)
-DELETE /api/maintenance-items/{maintenanceItemId} (delete maintenance item by ID)
+DELETE /api/maintenance-items/{maintenanceItemId} (delete maintenance item)
 GET /api/maintenance-items/home/{homeId} (get maintenance items by home ID)
 GET /api/maintenance-items/category/{categoryId} (get maintenance items by category ID)
 */
@@ -48,8 +48,8 @@ public class MaintenanceItemController {
     }
 
     @DeleteMapping("/{maintenanceItemId}")
-    public void deleteItemById(@PathVariable Integer maintenanceItemId) {
-        maintenanceItemService.deleteItemById(maintenanceItemId);
+    public void deleteItem(@PathVariable Integer maintenanceItemId) {
+        maintenanceItemService.deleteItem(maintenanceItemId);
     }
 
     // custom endpoints

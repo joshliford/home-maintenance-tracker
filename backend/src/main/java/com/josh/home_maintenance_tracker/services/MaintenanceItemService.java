@@ -1,5 +1,6 @@
 package com.josh.home_maintenance_tracker.services;
 
+import com.josh.home_maintenance_tracker.exceptions.ResourceNotFoundException;
 import com.josh.home_maintenance_tracker.models.MaintenanceItem;
 import com.josh.home_maintenance_tracker.repositories.MaintenanceItemRepository;
 import org.springframework.stereotype.Service;
@@ -10,12 +11,12 @@ import java.util.List;
 /*
 7 operations:
 getAllItems()
-getItemById(int id)
+getItemById(Integer id)
 createItem(MaintenanceItem item)
-updateItem(int id, MaintenanceItem item)
-deleteItem(int id)
-getItemsByHomeId(int homeId)
-getItemsByCategoryId(int categoryId)
+updateItem(Integer id, MaintenanceItem updatedItem)
+deleteItem(Integer id)
+getItemsByHomeId(Integer homeId)
+getItemsByCategoryId(Integer categoryId)
 */
 
 @Service
@@ -32,7 +33,8 @@ public class MaintenanceItemService {
     }
 
     public MaintenanceItem getItemById(Integer id) {
-        return maintenanceItemRepository.findById(id).orElse(null);
+        return maintenanceItemRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Maintenance item not found with id: " + id));
     }
 
     public MaintenanceItem createItem(MaintenanceItem maintenanceItem) {
@@ -41,10 +43,9 @@ public class MaintenanceItemService {
 
     public MaintenanceItem updateItem(Integer id, MaintenanceItem updatedItem) {
         // find the existingItem by ID
-        MaintenanceItem existingItem = maintenanceItemRepository.findById(id).orElse(null);
-        if (existingItem == null) {
-            return null; // TODO: throw exception
-        }
+        MaintenanceItem existingItem = maintenanceItemRepository.findById(id)
+                // throw custom exception if ID does not exist
+                .orElseThrow(() -> new ResourceNotFoundException("Maintenance item not found with id: " + id));
         // update all fields with updatedItem info (exclude id and createdAt)
         existingItem.setDescription(updatedItem.getDescription());
         existingItem.setYearInstalled(updatedItem.getYearInstalled());
@@ -59,8 +60,10 @@ public class MaintenanceItemService {
         return maintenanceItemRepository.save(existingItem);
     }
 
-    public void deleteItemById(Integer id) {
-        maintenanceItemRepository.deleteById(id);
+    public void deleteItem(Integer id) {
+        MaintenanceItem existingMaintenanceItem = maintenanceItemRepository.findById(id)
+                        .orElseThrow(() -> new ResourceNotFoundException("Maintenance item not found with id: " + id));
+        maintenanceItemRepository.delete(existingMaintenanceItem);
     }
 
     // custom filter methods (findByHomeId and findByCategoryId)

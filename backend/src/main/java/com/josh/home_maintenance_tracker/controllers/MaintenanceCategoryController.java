@@ -11,7 +11,7 @@ import java.util.List;
 GET api/categories (get all categories)
 GET api/categories/{categoryId} (get category by ID)
 POST api/categories (create new category)
-DELETE api/categories/{categoryId} (delete category by ID)
+DELETE api/categories/{categoryId} (delete category)
 */
 
 @RestController
@@ -42,7 +42,7 @@ public class MaintenanceCategoryController {
     }
 
     @DeleteMapping("/{categoryId}")
-    public void deleteCategoryById(@PathVariable Integer categoryId) {
+    public void deleteCategory(@PathVariable Integer categoryId) {
         maintenanceCategoryService.deleteCategory(categoryId);
     }
 
