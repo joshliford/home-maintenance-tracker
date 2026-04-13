@@ -14,6 +14,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @OneToOne(mappedBy = "user")
+    private Home home;
+
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -44,6 +47,14 @@ public class User {
         this.notificationPreference = notificationPreference;
         this.passwordHash = passwordHash;
         this.username = username;
+    }
+
+    public Home getHome() {
+        return home;
+    }
+
+    public void setHome(Home home) {
+        this.home = home;
     }
 
     public String getEmail() {
