@@ -1,10 +1,10 @@
-package com.josh.home_maintenance_tracker;
+package com.josh.homemaintenancetracker;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HomeMaintenanceTrackerApplicationTests {
+class HomemaintenancetrackerApplicationTests {
 
 	@Test
 	void contextLoads() {
